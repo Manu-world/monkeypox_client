@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/static/css/main.6b8ac497.css",
-    "main.js": "/static/js/main.201819dd.js",
-    "static/media/bg.jpeg": "/static/media/bg.ab1db311a6404fc9a54e.jpeg",
-    "index.html": "/index.html",
-    "main.6b8ac497.css.map": "/static/css/main.6b8ac497.css.map",
-    "main.201819dd.js.map": "/static/js/main.201819dd.js.map"
+    "main.css": "/monkeypox_client/static/css/main.6b8ac497.css",
+    "main.js": "/monkeypox_client/static/js/main.03467a3a.js",
+    "static/media/bg.jpeg": "/monkeypox_client/static/media/bg.ab1db311a6404fc9a54e.jpeg",
+    "index.html": "/monkeypox_client/index.html",
+    "main.6b8ac497.css.map": "/monkeypox_client/static/css/main.6b8ac497.css.map",
+    "main.03467a3a.js.map": "/monkeypox_client/static/js/main.03467a3a.js.map"
   },
   "entrypoints": [
     "static/css/main.6b8ac497.css",
-    "static/js/main.201819dd.js"
+    "static/js/main.03467a3a.js"
   ]
 }
