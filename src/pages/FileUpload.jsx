@@ -80,7 +80,7 @@ const FileUpload = () => {
   return (
     <div className="flex flex-col h-screen">
       <Navbar onMenuClick={toggleSidebar} onLogout={handleLogout} />
-      <div className="flex justify-center items-center max-h-screen min-h-screen w-full bg-gray-100 overflow-y-clip">
+      <div className="flex justify-center items-center h-screen w-full bg-gray-100 overflow-y-clip">
         <div className="w-[80%] bg-white h-[80vh] rounded-lg shadow-lg flex overflow-y-scroll scroll-smooth">
           <div className="w-full md:w-[46%] p-8 flex flex-col justify-center items-center">
             {/* File Upload Section */}
@@ -113,7 +113,7 @@ const FileUpload = () => {
                     )}
                   </div>
                 ) : (
-                  <div>
+                  <div className="my-3">
                     <p className="text-gray-500">Select a file and hit Check</p>
                     {/* Upload Icon */}
                     <svg
@@ -126,7 +126,7 @@ const FileUpload = () => {
                         strokeLinecap="round"
                         strokeLinejoin="round"
                         strokeWidth="2"
-                        d="M3 15a4 4 0 008 0m0 0a4 4 0 018 0M8 7V3m8 4V3m-6 10v6m0-6h-6m6 0h6"
+                        d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
                       />
                     </svg>
                   </div>
@@ -136,6 +136,7 @@ const FileUpload = () => {
                 {error && <p className="text-red-500 mb-2">{error}</p>}
                 <input
                   type="file"
+                  accept="image/*"
                   onChange={handleFileChange}
                   className="text-gray-500 px-4 py-2 rounded-lg my-2 border-2 border-blue-500 w-full"
                 />
