@@ -49,20 +49,17 @@ const AuthForm = ({ type }) => {
 
   const handleFocus = (field) => setFocusedField(field);
   const handleBlur = () => setFocusedField(null);
-  const handleLabelClick = (inputName) => {
-    document.querySelector(`input[name="${inputName}"]`).focus();
-  };
+
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       {error && <p className="text-red-500">{error}</p>}
       {type === "register" && (
         <div className="relative">
           <label
-            onClick={() => handleLabelClick("username")}
-            className={`absolute left-3 top-1/2 transform -translate-y-1/2 transition-all cursor-text ${
+            className={`absolute left-3 transition-all duration-300 ${
               focusedField === "username" || formData.username
-                ? "-top-[3%] left-2 bg-white rounded-lg  text-gray-500"
-                : "text-gray-400"
+                ? "text-sm font-normal -top-3 bg-slate-50 text-gray-500"
+                : "text-base top-1/2 -translate-y-1/2 text-gray-400"
             }`}>
             Username
           </label>
@@ -74,17 +71,17 @@ const AuthForm = ({ type }) => {
             onFocus={() => handleFocus("username")}
             onBlur={handleBlur}
             className="block w-full p-2 pt-3 border rounded"
+            autoComplete="username"
             required
           />
         </div>
       )}
       <div className="relative">
         <label
-          onClick={() => handleLabelClick("email")}
-          className={`absolute left-3 cursor-text top-1/2 transform -translate-y-1/2 transition-all ${
+          className={`absolute left-3 transition-all duration-300 ${
             focusedField === "email" || formData.email
-              ? "-top-[3%] left-2 bg-white rounded-lg  text-gray-500"
-              : "text-gray-400"
+              ? "text-sm font-normal -top-3 bg-slate-50 text-gray-500"
+              : "text-base top-1/2 -translate-y-1/2 text-gray-400"
           }`}>
           Email
         </label>
@@ -96,16 +93,16 @@ const AuthForm = ({ type }) => {
           onFocus={() => handleFocus("email")}
           onBlur={handleBlur}
           className="block w-full p-2 pt-3 border rounded"
+          autoComplete="email"
           required
         />
       </div>
       <div className="relative">
         <label
-          onClick={() => handleLabelClick("password")}
-          className={`absolute left-3 top-1/2 transform -translate-y-1/2 transition-all ${
+          className={`absolute left-3 transition-all duration-300 ${
             focusedField === "password" || formData.password
-              ? "-top-[3%] left-2 bg-white rounded-lg  text-gray-500"
-              : "text-gray-400"
+              ? "text-sm font-normal -top-3 bg-slate-50 text-gray-500"
+              : "text-base top-1/2 -translate-y-1/2 text-gray-400"
           }`}>
           Password
         </label>
@@ -129,11 +126,10 @@ const AuthForm = ({ type }) => {
       {type === "register" && (
         <div className="relative">
           <label
-            onClick={() => handleLabelClick("confirmPassword")}
-            className={`absolute left-3 top-1/2 transform -translate-y-1/2 transition-all cursor-text ${
+            className={`absolute left-3 transition-all duration-300 ${
               focusedField === "confirmPassword" || formData.confirmPassword
-                ? "-top-[3%] left-2 bg-white rounded-lg text-gray-500"
-                : "text-gray-400"
+                ? "text-sm font-normal -top-3 bg-slate-50 text-gray-500"
+                : "text-base top-1/2 -translate-y-1/2 text-gray-400"
             }`}>
             Confirm Password
           </label>
