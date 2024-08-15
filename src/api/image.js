@@ -1,7 +1,7 @@
 // src/api/image.js
 import axios from "axios";
 
-const API_URL = process.env.API_URL + "/api/images/";
+const API_URL = "https://monkeypox-api.onrender.com/api/images/";
 
 export const predictImage = async (file, token) => {
   const formData = new FormData();
