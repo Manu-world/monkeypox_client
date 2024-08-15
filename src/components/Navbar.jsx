@@ -55,7 +55,7 @@ const Navbar = ({ onMenuClick, onLogout }) => {
           </svg>
         </button>
         {isAvatarOpen && (
-          <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg z-10">
+          <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg z-50">
             <button
               onClick={() => {
                 navigate("/");

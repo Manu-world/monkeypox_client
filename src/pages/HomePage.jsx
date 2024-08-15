@@ -1,30 +1,44 @@
-// import { useState } from "react";
-// import { Dialog } from "@headlessui/react";
-// import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import bg from "../assets/bg.jpeg";
-// import cure from "../assets/cure.jpeg";
-// import pandemic from "../assets/pandemic.jpeg";
-// import protection from "../assets/protection.jpeg";
 
 const HomePage = () => {
-  // const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  // const navigate = useNavigate();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem("authToken");
+    if (token) {
+      setIsLoggedIn(true);
+    }
+  }, []);
+
+  const handleDetectClick = (e) => {
+    e.preventDefault();
+    if (isLoggedIn) {
+      console.log("isLoggedIn " + isLoggedIn);
+      navigate("/file_upload");
+    } else {
+      console.log("is not logged in");
+      navigate("/login");
+    }
+  };
+
   return (
-    <div className="bg-white">
-      <div className="relative isolate px-6 pt-5 lg:px-8">
+    <div className="bg-white h-screen overflow-hidden min-h-screen">
+      <div className="relative h-full isolate px-6 pt-5 lg:px-8">
         <div className="overlay absolute top-0 left-0 w-full h-full bg-black bg-opacity-55"></div>
         <img
           className="absolute inset-0 -z-10 h-full w-full object-cover object-center md:object-center bg-no-repeat"
           src={bg}
-          alt="Heart rate background"
+          alt="pandemic background"
         />
         <div className="relative z-10">
           <div className="relative z-10">
-            {/* Your main content */}
             <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
               <div className="hidden sm:mb-8 sm:flex sm:justify-center">
                 <div className="relative rounded-full px-3 py-1 text-sm leading-6 text-white ring-1 ring-gray-100/20 hover:ring-gray-100">
-                  Read a lot more about monkeypox.{" "}
+                  Read a lot more on monkeypox.{" "}
                   <a
                     href="https://rb.gy/1bafn8"
                     className="font-semibold text-indigo-600"
@@ -45,8 +59,9 @@ const HomePage = () => {
                 </p>
                 <div className="mt-10 flex items-center justify-center gap-x-6">
                   <a
-                    href="/login"
-                    className="rounded-md bg-indigo-600 px-10 py-3 text-sm font-semibold text-white shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                    href="/detect"
+                    onClick={handleDetectClick}
+                    className="rounded-md bg-indigo-600 px-10 py-3 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
                     Detect
                   </a>
                 </div>
@@ -69,4 +84,5 @@ const HomePage = () => {
     </div>
   );
 };
+
 export default HomePage;

@@ -3,7 +3,7 @@ import React from "react";
 const Sidebar = ({ isOpen, onClose, history }) => {
   return (
     <div
-      className={`fixed inset-0 z-50 transform ${
+      className={`fixed inset-0 z-40 transform ${
         isOpen ? "translate-x-0" : "-translate-x-full"
       } transition-transform duration-3000 ease-in-out md:static md:translate-x-0 md:w-[54%] md:px-8 md:pb-8 md:bg-gray-100 overflow-y-scroll md:overflow-y-auto bg-white scroll-m-7`}>
       <div className="flex justify-between items-center mx-4 sticky top-0 bg-white z-10">
