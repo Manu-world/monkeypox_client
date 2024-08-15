@@ -1,7 +1,10 @@
 // src/api/auth.js
 import axios from "axios";
 
-const API_URL = process.env.API_URL + "/auth/";
+const API_URL = process.env.API_URL + "/api/auth/";
+console.log(process.env.API_URL);
+console.log(API_URL);
+console.log("process.env.API_URL");
 
 export const register = async (userData) => {
   try {
