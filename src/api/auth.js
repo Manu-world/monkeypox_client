@@ -1,8 +1,7 @@
 // src/api/auth.js
 import axios from "axios";
 
-const API_URL = "https://monkeypox-api.onrender.com/api/auth/";
-// const API_URL = "http://localhost:5000/api/auth/";
+const API_URL = process.env.API_URL + "/auth/";
 
 export const register = async (userData) => {
   try {
