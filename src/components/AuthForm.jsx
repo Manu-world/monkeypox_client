@@ -56,6 +56,7 @@ const AuthForm = ({ type }) => {
       {type === "register" && (
         <div className="relative">
           <label
+            htmlFor="username"
             className={`absolute left-3 transition-all duration-300 ${
               focusedField === "username" || formData.username
                 ? "text-sm font-normal -top-3 bg-slate-50 text-gray-500"
@@ -64,6 +65,7 @@ const AuthForm = ({ type }) => {
             Username
           </label>
           <input
+            id="username"
             type="text"
             name="username"
             value={formData.username}
@@ -78,6 +80,7 @@ const AuthForm = ({ type }) => {
       )}
       <div className="relative">
         <label
+          htmlFor="email"
           className={`absolute left-3 transition-all duration-300 ${
             focusedField === "email" || formData.email
               ? "text-sm font-normal -top-3 bg-slate-50 text-gray-500"
@@ -88,6 +91,7 @@ const AuthForm = ({ type }) => {
         <input
           type="email"
           name="email"
+          id="email"
           value={formData.email}
           onChange={handleChange}
           onFocus={() => handleFocus("email")}
@@ -103,12 +107,14 @@ const AuthForm = ({ type }) => {
             focusedField === "password" || formData.password
               ? "text-sm font-normal -top-3 bg-slate-50 text-gray-500"
               : "text-base top-1/2 -translate-y-1/2 text-gray-400"
-          }`}>
+          }`}
+          htmlFor="password">
           Password
         </label>
         <input
           type={showPassword ? "text" : "password"}
           name="password"
+          id="password"
           value={formData.password}
           onChange={handleChange}
           onFocus={() => handleFocus("password")}
@@ -126,6 +132,7 @@ const AuthForm = ({ type }) => {
       {type === "register" && (
         <div className="relative">
           <label
+            htmlFor="confirmPassword"
             className={`absolute left-3 transition-all duration-300 ${
               focusedField === "confirmPassword" || formData.confirmPassword
                 ? "text-sm font-normal -top-3 bg-slate-50 text-gray-500"
@@ -134,6 +141,7 @@ const AuthForm = ({ type }) => {
             Confirm Password
           </label>
           <input
+            id="confirmPassword"
             type={showConfirmPassword ? "text" : "password"}
             name="confirmPassword"
             value={formData.confirmPassword}
