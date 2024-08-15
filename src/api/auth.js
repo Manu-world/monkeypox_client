@@ -2,9 +2,8 @@
 import axios from "axios";
 
 const API_URL = "https://monkeypox-api.onrender.com/api/auth/";
-console.log(process.env.API_URL);
-console.log(API_URL);
-console.log("process.env.API_URL");
+
+axios.defaults.withCredentials = true;
 
 export const register = async (userData) => {
   try {
