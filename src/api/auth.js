@@ -2,6 +2,7 @@
 import axios from "axios";
 
 const API_URL = "https://monkeypox-api.onrender.com/api/auth/";
+// const API_URL = "http://localhost:5000/api/auth/";
 
 axios.defaults.withCredentials = true;
 

@@ -13,6 +13,8 @@ const AuthForm = ({ type }) => {
     confirmPassword: "",
   });
   const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(null); // Success message state
+  const [loading, setLoading] = useState(false); // Loading state for button
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [focusedField, setFocusedField] = useState(null); // Track which input is focused
@@ -23,36 +25,57 @@ const AuthForm = ({ type }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError(null);
+    setSuccess(null);
+    setLoading(true); // Start loading
 
     if (type === "register") {
       if (formData.password !== formData.confirmPassword) {
         setError("Passwords do not match");
+        setLoading(false);
         return;
       }
       const { email, password, username } = formData;
       try {
-        await register({ email, password, username });
-        navigate("/login");
+        const response = await register({ email, password, username });
+
+        console.log(response);
+
+        if (response.success) {
+          setSuccess("Registration successful! Redirecting to login...");
+          setLoading(false);
+
+          setTimeout(() => {
+            navigate("/login");
+          }, 2000); // Delay to show success message before redirecting
+        } else {
+          throw new Error(response.message || "Registration failed");
+        }
       } catch (err) {
         setError(err.message || "Something went wrong");
+        setLoading(false);
       }
     } else if (type === "login") {
       const { email, password } = formData;
       try {
         await login({ email, password });
-        navigate("/file_upload");
+        setSuccess("Login successful! Redirecting...");
+        setTimeout(() => {
+          navigate("/file_upload");
+        }, 2000); // Delay to show success message before redirecting
       } catch (err) {
         setError(err.message || "Invalid email or password");
+        setLoading(false);
       }
     }
   };
-
   const handleFocus = (field) => setFocusedField(field);
   const handleBlur = () => setFocusedField(null);
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
-      {error && <p className="text-red-500">{error}</p>}
+      {error && <p className="text-red-500 text-center">{error}</p>}
+      {success && <p className="text-green-500 text-center">{success}</p>}
       {type === "register" && (
         <div className="relative">
           <label
@@ -161,8 +184,16 @@ const AuthForm = ({ type }) => {
       )}
       <button
         type="submit"
-        className="w-full p-2 bg-blue-600 text-white rounded">
-        {type === "login" ? "Login" : "Register"}
+        className="w-full p-2 bg-blue-600 text-white rounded"
+        disabled={loading} // Disable button during loading
+      >
+        {loading
+          ? type === "login"
+            ? "Logging in..."
+            : "Registering..."
+          : type === "login"
+          ? "Login"
+          : "Register"}
       </button>
     </form>
   );
